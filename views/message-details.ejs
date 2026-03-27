@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('head', {title})%>
+    <body>
+        <%- include('header', {title}) %>
+        <div class="content">
+            <div class="details-container">
+                <div class="details-list">
+                    <p class="detail">
+                        <span class="detail-label">Username:</span>
+                        <span class="detail-data"><%= message.user %></span>
+                    </p>
+                    <p class="detail">
+                        <span class="detail-label">Message:</span>
+                        <span class="detail-data"><%= message.text %></span>
+                    </p>
+                    <p class="detail">
+                        <span class="detail-label">Sent on:</span>
+                        <span class="detail-data"><%= message.added.toDateString() %></span>
+                    </p>
+                </div class="detail-list">
+                <a class="back" href="/">Back</a>
+            </div>
+        </div>        
+        <%- include('footer', {title}) %>
+    </body>
+</html>

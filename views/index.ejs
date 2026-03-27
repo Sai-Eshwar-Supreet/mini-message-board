@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= appName %></title>
-</head>
-<body>
-    <h1><%= appName %></h1>
-</body>
+    <%- include('head', {title})%>
+    <body>
+        <%- include('header', {title}) %>
+
+        <div class="content">
+            <div class="messages-container">
+                <a class="add" href="/new">New message</a>
+                <ul>
+                    <%
+                        for(let i = messages.length - 1; i >= 0; i--){%>
+                            <%- include('message', {message: messages[i]}) %>
+                        <%}
+                    %>
+                </ul>
+            </div>
+        </div>
+            
+        <%- include('footer', {title}) %>
+    </body>
 </html>

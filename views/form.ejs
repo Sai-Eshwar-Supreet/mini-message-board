@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('head', {title})%>
+    <body>
+        <%- include('header', {title}) %>
+
+        <div class="content">
+            <form class="new-message-form" method="POST" action="/new">
+                <div class="form-row">
+                    <label for="username">User*</label>
+                    <input id="username" type="text" name="username" value="<%= username %>" required />
+                </div>
+                <div class="form-row">
+                    <label for="message">Message*</label>
+                    <textarea name="message" id="message" required></textarea>
+                </div>
+                <div class="button-container">
+                    <a class="back" href="/" >Back</a>
+                    <button class="form-row" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+            
+        <%- include('footer', {title}) %>
+    </body>
+</html>
