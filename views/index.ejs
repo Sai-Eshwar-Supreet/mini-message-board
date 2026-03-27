@@ -9,9 +9,9 @@
                 <a class="add" href="/new">New message</a>
                 <ul>
                     <%
-                        for(let i = messages.length - 1; i >= 0; i--){%>
-                            <%- include('message', {message: messages[i]}) %>
-                        <%}
+                        messages.forEach(message => {%>
+                            <%- include('message', {message}) %>
+                        <%})
                     %>
                 </ul>
             </div>
