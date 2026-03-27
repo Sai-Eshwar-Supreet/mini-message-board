@@ -6,7 +6,7 @@ Users can create messages and view them on the main page. Each message can also 
 
 ## Live Demo
 
-[View on GitHub Pages](https://mini-message-board-faly.onrender.com/)
+[View Live Demo](https://mini-message-board-faly.onrender.com/)
 
 ## Features
 
