@@ -4,6 +4,10 @@ A simple server-rendered message board built with **Express** and **EJS**.
 
 Users can create messages and view them on the main page. Each message can also be opened to view its details.
 
+## Live Demo
+
+[View on GitHub Pages](https://mini-message-board-faly.onrender.com/)
+
 ## Features
 
 - View all messages on the homepage
