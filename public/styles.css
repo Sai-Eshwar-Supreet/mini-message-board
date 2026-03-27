@@ -1,0 +1,336 @@
+/* ==================== RESET ==================== */
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    font: inherit;
+}
+
+img{
+    display: block;
+}
+
+/* ==================== TOKENS ==================== */
+:root{
+    /* Font sizes */
+    --font-size-extra-large: clamp(3rem, 2.75rem + 2vw, 3.5rem);
+    --font-size-large:  clamp(2.25rem, 2rem + 1.5vw, 2.5rem);
+    --font-size-medium:  clamp(1.75rem, 1rem + 1vw, 2rem);
+    --font-size-normal: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+    --font-size-small: clamp(0.95rem, 0.75rem + 0.5vw, 1rem);
+
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-semi: 500;
+    --font-weight-bold: 700; 
+
+    /* Spacing */
+    --space-tiny: 0.25rem;
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 1.5rem;
+    --space-far: 2rem;
+    --space-extreme: 4rem;
+
+    /* Border radius */
+    --radius-small: 8px;
+
+    /* Shadows */
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.06),
+                   0 4px 12px rgba(0,0,0,0.04);
+
+    --shadow-lift-light: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+    --shadow-lift-regular: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    --shadow-lift-heavy: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+
+    --shadow-light: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    --shadow-regular: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+
+    /* Colors */
+    --color-bg-base: #fbfaf8;
+    --color-neutral-900: black;
+    --color-neutral-800: rgb(77, 77, 77);
+    --color-neutral-600: gray;
+    --color-neutral-400: rgb(167, 167, 167);
+    --color-neutral-200: lightgray;
+    --color-neutral-150: rgb(235, 235, 235);
+    --color-neutral-100: white;
+
+    --color-accent: #3b84cc;
+    --color-accent-faded: rgba(60, 133, 205, 0.3);
+    --color-success: #11e245;
+    --color-danger: #e21111;
+
+    --color-resume-header: ;
+}
+
+/* ==================== MAIN LAYOUT ==================== */
+
+body{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-small);
+    
+    height: 100vh;
+}
+
+.header, .footer{
+    padding: var(--space-medium);
+    text-align: center;
+}
+
+.header{
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semi);
+    
+    box-shadow: var(--shadow-lift-light);
+}
+
+.content{
+    width: min(600px, 100%);
+    
+    margin: 0 auto;
+
+    overflow: auto;
+}
+
+.footer{
+    margin-top: auto;
+    
+    
+    border-top: 1px solid var(--color-neutral-200);
+}
+
+/* ==================== ERROR ==================== */
+.error-container{
+    height: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--space-large);
+
+    box-shadow: var(--shadow-card);
+
+    border: 1px solid var(--color-neutral-150);
+    border-radius: var(--radius-small);
+
+    margin: var(--space-medium);
+}
+
+.error-message{
+    color: var(--color-danger);
+    font-size: var(--font-size-medium);
+}
+
+.return{
+    text-decoration: none;
+
+    align-self: center;
+
+    font-weight: var(--font-weight-semi);
+
+    padding: var(--space-small) var(--space-medium);
+    border-radius: var(--radius-small);
+    
+    color: var(--color-neutral-800);
+    border: 1px solid var(--color-neutral-800);
+    background-color: var(--color-neutral-100);
+}
+.return:hover{
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+
+/* ==================== INDEX ==================== */
+
+.messages-container{
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-medium);
+
+    gap: var(--space-medium);
+}
+
+.messages-container > ul{
+    list-style-type: none;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+}
+
+.message{
+    display: flex;
+
+    gap: var(--space-small);
+
+    padding: var(--space-medium);
+
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-neutral-150);
+
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-card);
+}
+
+.message-user{
+    margin-bottom: var(--space-small);
+    color: var(--color-neutral-600);
+
+    font-size: var(--font-size-small);
+}
+
+.message-text{
+    font-size: var(--font-size-normal);
+}
+
+.message-info{
+    text-decoration: none;
+    
+    color: var(--color-accent);
+}
+
+.message-info:hover{
+    text-decoration: underline;
+}
+
+.add{
+    text-decoration: none;
+
+    align-self: center;
+
+    font-weight: var(--font-weight-semi);
+
+    padding: var(--space-small) var(--space-medium);
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-accent);
+
+    color: var(--color-neutral-100);
+    background-color: var(--color-accent);
+}
+
+.add:hover{
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-neutral-100);
+}
+
+
+/* ==================== DETAILS ==================== */
+.details-container{
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-medium);
+}
+.details-list{
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    
+    padding: var(--space-medium);
+    gap: var(--space-medium);
+
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-neutral-150);
+    box-shadow: var(--shadow-card);
+
+    margin-bottom: var(--space-medium);
+}
+
+.detail{
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+}
+
+.back{    
+    text-decoration: none;
+
+    align-self: center;
+
+    font-weight: var(--font-weight-semi);
+
+    padding: var(--space-small) var(--space-medium);
+    border-radius: var(--radius-small);
+    
+    color: var(--color-neutral-800);
+    border: 1px solid var(--color-neutral-800);
+    background-color: var(--color-neutral-100);
+}
+
+.back:hover{
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    background-color: var(--color-neutral-100);
+}
+
+.detail-label{
+    font-weight: var(--font-weight-semi);
+}
+
+/* ==================== New Message ==================== */
+
+.new-message-form{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+
+    padding: var(--space-medium);
+}
+
+.form-row{
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-small);
+}
+
+button.form-row{
+    align-self: center;
+
+    border-radius: var(--radius-small);
+
+    padding: var(--space-small) var(--space-medium);
+    border: 1px solid var(--color-accent);
+    color: var(--color-neutral-100);
+    background-color: var(--color-accent);
+}
+
+button.form-row:hover{
+    color: var(--color-accent);
+    background-color: var(--color-neutral-100);
+}
+
+input[type='text'], textarea{
+    height: 40px;
+
+    padding: var(--space-small);
+
+    border-radius: var(--radius-small);
+}
+
+
+textarea{
+    min-height: 200px;
+
+    resize: vertical;
+}
+
+.button-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-small);
+
+    justify-content: center;
+}
