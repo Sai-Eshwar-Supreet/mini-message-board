@@ -25,6 +25,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     if(res.headersSent){
         next(err);
+        return;
     }
     console.error(err);
     res.status(err.status || 500).render('error', {title: TITLE, errMessage: 'Something seems to be broken!'});

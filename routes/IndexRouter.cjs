@@ -9,7 +9,7 @@ const {TITLE} = getAppData();
 // ==================== ROUTING ====================
 
 IndexRouter.get('/', (req, res) =>{
-    res.render('index', {title: TITLE, messages: getAll()});
+    res.render('index', {title: TITLE, messages: getAll().reverse()});
 });
 
 IndexRouter.get('/new', (req, res) => {
@@ -25,8 +25,8 @@ IndexRouter.post('/new', (req, res) => {
     }
 });
 
-IndexRouter.get('/details', (req, res) => {
-    const id = req.query.id;
+IndexRouter.get('/details/:id', (req, res) => {
+    const id = req.params.id;
 
     const message = get(id);
     if(!message){

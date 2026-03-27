@@ -1,16 +1,18 @@
+const crypto = require('crypto');
 const messages = require("../models/Messages.cjs");
 
 
 function getAll(){
-    return messages;
+    return [...messages];
 }
 
 function get(id){
-    return {...messages.find(message => message.id === id)};
+    const message = messages.find(message => message.id === id);
+    return message ?  {...message} : null;
 }
 
 function add(user, text){
-    if(!user || !text) return false;
+    if(!user?.trim() || !text?.trim()) return false;
     messages.push({ id: crypto.randomUUID(), user, text, added: new Date() });
     return true;
 }
