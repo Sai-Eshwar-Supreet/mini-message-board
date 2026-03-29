@@ -19,48 +19,63 @@ const formValidator = [
 ]
 
 const messageDetailValidator = [
-    param('id').trim().notEmpty().bail()
-    .escape(),
+    param('id').isInt().toInt().withMessage('Invalid ID'),
 ]
 
-async function getIndex(req, res){
-    const messages = await db.getMessages();
-    res.render('index', {title: TITLE, messages});
+async function getIndex(req, res, next){
+    try{
+
+        const messages = await db.getMessages();
+        res.render('index', {title: TITLE, messages});
+    }
+    catch(err){
+        next(err);
+    }
 };
 
 function getUserForm(req, res){
     res.render('form', {title: TITLE});
 }
 
-async function postNewUser(req, res){
-    const errors = validationResult(req);
-
-    if(!errors.isEmpty()){
-        return res.status(400).render('form', {title: TITLE, errors: errors.array()});
+async function postNewUser(req, res, next){
+    try{
+        const errors = validationResult(req);
+    
+        if(!errors.isEmpty()){
+            return res.status(400).render('form', {title: TITLE, errors: errors.array(), data:req.body});
+        }
+    
+        const {username, message} = matchedData(req);
+    
+        await db.addMessage(username, message);
+        res.redirect('/');
     }
-
-    const {username, message} = matchedData(req);
-
-    await db.addMessage(username, message, new Date());
-    res.redirect('/');
+    catch(err){
+        next(err);
+    }
 }
 
-async function getMessageDetails(req, res){
-    const errors = validationResult(req);
-
-    if(!errors.isEmpty()){
-        return res.sendStatus(400);
+async function getMessageDetails(req, res, next){
+    try{
+        const errors = validationResult(req);
+    
+        if(!errors.isEmpty()){
+            return res.sendStatus(400);
+        }
+    
+        const {id} = matchedData(req);
+    
+        const message = await db.getMessage(id);
+        if(!message){
+            res.status(404).render('error', {title: TITLE, errMessage: '404: Requested message not found!' });
+            return;
+        }
+    
+        res.render('message-details', {title: TITLE, message});
     }
-
-    const {id} = matchedData(req);
-
-    const message = await db.getMessage(id);
-    if(!message){
-        res.status(404).render('error', {title: TITLE, errMessage: '404: Requested message not found!' });
-        return;
+    catch(err){
+        next(err);
     }
-
-    res.render('message-details', {title: TITLE, message});
 }
 
 module.exports.getIndex = getIndex; 

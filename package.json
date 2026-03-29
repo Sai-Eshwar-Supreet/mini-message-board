@@ -1,12 +1,13 @@
 {
   "name": "mini-message-board",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Server-rendered message board with Express, PostgreSQL, and validation",
+  "main": "app.cjs",
   "scripts": {
     "start": "node app.cjs",
     "dev": "node --watch --env-file-if-exists=.env app.cjs",
     "debug": "node --inspect --watch --env-file-if-exists=.env app.cjs",
+    "db:init": "node db/populatedb.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

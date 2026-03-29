@@ -10,9 +10,9 @@ if(!connectionString){
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
-    username VARCHAR (255),
-    message TEXT,
-    date TIMESTAMPTZ
+    username VARCHAR(20) NOT NULL,
+    message TEXT NOT NULL,
+    date TIMESTAMPTZ DEFAULT NOW()
 );
 `;
 
