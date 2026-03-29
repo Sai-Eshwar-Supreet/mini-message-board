@@ -2,13 +2,14 @@
 <html lang="en">
     <%- include('head', {title})%>
     <body>
-        <%- include('header', {title}) %>
+        <%- include('header') %>
 
         <div class="content">
+            <%- include('partials/errors') %>
             <form class="new-message-form" method="POST" action="/new">
                 <div class="form-row">
                     <label for="username">User*</label>
-                    <input id="username" type="text" name="username" value="<%= username %>" required />
+                    <input id="username" type="text" name="username" required />
                 </div>
                 <div class="form-row">
                     <label for="message">Message*</label>
@@ -21,6 +22,6 @@
             </form>
         </div>
             
-        <%- include('footer', {title}) %>
+        <%- include('footer') %>
     </body>
 </html>
