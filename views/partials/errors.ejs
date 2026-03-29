@@ -1,11 +1,13 @@
-<ul>
-    <% if(locals.errors){
+<% if(locals.errors){%>
+    <ul class="error-box">
+        <% 
         errors.forEach(error => {
             %>
-                <li>
+                <li class="error-message">
                     <%= error.msg %>
                 </li>
             <%
         });
-    } %>
-</ul>
+        %>
+    </ul>
+<%} %>

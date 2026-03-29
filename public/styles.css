@@ -334,3 +334,31 @@ textarea{
 
     justify-content: center;
 }
+
+/* ==================== ERROR BOX ==================== */
+
+.error-box{
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+
+    list-style-type: none;
+
+    margin: var(--space-medium);
+    padding: var(--space-medium);
+
+    background-color: rgb(255, 202, 202);
+
+    border-radius: var(--radius-small);
+}
+
+.error-box .error-message{
+    font-size: var(--font-size-small);
+
+    color: var(--color-neutral-900);
+}
+
+.error-box .error-message::before{
+    content: '➤';
+}
