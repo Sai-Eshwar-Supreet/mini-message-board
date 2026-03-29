@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS messages (
 async function main(){
     console.log("Initializing DB");
     const client = new Client({
-        connectionString: connectionString
+        connectionString: connectionString,
+        ssl: {rejectUnauthorized: false}
     });
 
     await client.connect();
