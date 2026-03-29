@@ -48,13 +48,14 @@ DB_CONNECTION_STRING=<your_postgres_connection_string>
 
 # Project Structure
 
-.
+````.
 ├── controllers/
 ├── db/
 ├── models/
 ├── public/
 ├── routes/
 ├── views/
+```
 
 ## Notes
 
@@ -65,3 +66,4 @@ DB_CONNECTION_STRING=<your_postgres_connection_string>
 ## Context
 
 - Built while learning backend development with [The Odin Project](https://www.theodinproject.com/) and extended with database integration and validation.
+````
